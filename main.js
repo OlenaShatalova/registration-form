@@ -12,17 +12,6 @@ const container = document.querySelector("#container-js");
 const registerWrapper = document.querySelector("#registerWrapper-js");
 const form = document.querySelector("#registerForm-js");
 
-// const inputs = form.querySelectorAll("input");
-// const email = form.querySelector('input[type="email"]');
-// const checkbox = form.querySelector('input[type="checkbox"]');
-// console.log(inputs);
-
-const nameInput = form.querySelector('input[name="name"]');
-const emailInput = form.querySelector('input[type="email"]');
-const phoneInput = form.querySelector('input[name="phone"]');
-const checkbox = form.querySelector('input[type="checkbox"]');
-const submitButton = form.querySelector("button[type='submit']");
-
 ///====================================
 /// Логіка модального вікна
 openModalBtn.addEventListener("click", () => {
@@ -41,16 +30,16 @@ closeModalBtn.addEventListener("click", () => {
   form.style.display = "none";
 });
 
-// window.addEventListener("resize", () => {
-//   if (window.innerWidth > 768 && modal.classList.contains("show")) {
-//     modal.classList.remove("show"); // Закриваємо модальне вікно
-//     container.appendChild(registerWrapper); // Повертаємо вміст реєстрації назад до контейнера
-//     registerWrapper.classList.add("box-shadow", "padding", "position");
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768 && modal.classList.contains("show")) {
+    modal.classList.remove("show"); // Закриваємо модальне вікно
+    container.appendChild(registerWrapper); // Повертаємо вміст реєстрації назад до контейнера
+    registerWrapper.classList.add("box-shadow", "padding", "position");
 
-//     openModalBtn.style.display = "none";
-//     form.style.display = "grid";
-//   }
-// });
+    openModalBtn.style.display = "none";
+    form.style.display = "grid";
+  }
+});
 
 ///====================================
 // Валідація форми
@@ -66,9 +55,7 @@ form.addEventListener("submit", (e) => {
     phone: form.phone.value,
   };
 
-  if (checkbox.checked) {
-    sendData(formData, form); // викликаємо функцію для відправки даних
-  }
+  sendData(formData, form); // викликаємо функцію для відправки даних
 });
 //
 

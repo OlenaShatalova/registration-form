@@ -9,6 +9,7 @@
 
 .container {
   width: 100%;
+  max-width: 360px;
   margin-inline: auto;
   padding: 1.25rem;
 }
@@ -287,6 +288,7 @@
   }
 
   .container {
+    max-width: 768px;
     padding: 2rem 1.8125rem;
   }
 
@@ -372,6 +374,7 @@
   }
 
   .container {
+    max-width: 1440px;
     padding: 40px 112px;
   }
 
@@ -390,6 +393,7 @@
   }
 
   .title {
+    max-width: 97%;
     font-size: 56px;
     line-height: 1.21;
     margin-bottom: 40px;
@@ -402,7 +406,7 @@
   .text {
     font-size: 20px;
     line-height: 1.4;
-    width: 554px;
+    max-width: 34.6rem;
   }
 
   .to-tablet-break {
