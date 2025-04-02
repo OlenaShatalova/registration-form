@@ -219,6 +219,12 @@
   color: var(--privacy-link);
 }
 
+.error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+  color: red;
+}
+
 /* стилі кнопки для відкриття модал. та відправки даних форми */
 .button {
   font-family: inherit;

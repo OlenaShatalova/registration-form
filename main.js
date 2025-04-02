@@ -13,10 +13,17 @@ const container = document.querySelector("#container-js");
 const registerWrapper = document.querySelector("#registerWrapper-js");
 const form = document.querySelector("#registerForm-js");
 
-const inputs = form.querySelectorAll("input");
-const email = form.querySelector('input[type="email"]');
-const checkbox = form.querySelector('input[type="checkbox"]');
+// const inputs = form.querySelectorAll("input");
+// const email = form.querySelector('input[type="email"]');
+// const checkbox = form.querySelector('input[type="checkbox"]');
 // console.log(inputs);
+
+const nameInput = form.querySelector('input[name="name"]');
+const emailInput = form.querySelector('input[type="email"]');
+const phoneInput = form.querySelector('input[name="phone"]');
+const checkbox = form.querySelector('input[type="checkbox"]');
+const submitButton = form.querySelector("button[type='submit']");
+console.log(nameInput);
 
 ///====================================
 /// Логіка модального вікна
@@ -36,5 +43,36 @@ closeModalBtn.addEventListener("click", () => {
   form.style.display = "none";
 });
 
-///====================================
 //// форма реєстрації
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const formData = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+  };
+
+  if (checkbox.checked) {
+    sendData(formData, form); // викликаємо функцію для відправки даних
+  }
+});
+//
+
+async function sendData(formData, form) {
+  try {
+    // console.log("Відправка даних на endpoint:", formData); // Виводимо дані перед відправкою
+
+    const response = await fetch("https://example.com/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (!response.ok) throw new Error("Помилка реєстрації");
+    alert("Форма успішно відправлена!");
+    form.reset();
+  } catch (error) {
+    alert("Помилка відправки форми");
+  }
+}
