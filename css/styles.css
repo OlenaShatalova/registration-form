@@ -29,12 +29,21 @@
 .event-time {
   position: relative;
   border: 0.025rem solid var(--accent-color);
-  padding: 0.25rem 0.5rem;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 1.43;
   letter-spacing: 0.08em;
   color: var(--accent-color);
+}
+.event-title {
+  width: 196px;
+}
+.event-time {
+  width: 186px;
 }
 
 .top-left,
@@ -313,9 +322,15 @@
 
   .event-title,
   .event-time {
-    padding: 0.5rem 1rem;
     font-size: 1rem;
     line-height: 1.5;
+    height: 36px;
+  }
+  .event-title {
+    width: 238px;
+  }
+  .event-time {
+    width: 226px;
   }
 
   .top-left,
@@ -390,6 +405,16 @@
     display: flex;
     gap: 30px;
     margin-bottom: 42px;
+  }
+  .event-title,
+  .event-time {
+    height: 40px;
+  }
+  .event-title {
+    width: 238px;
+  }
+  .event-time {
+    width: 230px;
   }
 
   .title {
