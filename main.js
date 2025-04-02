@@ -76,7 +76,7 @@ function validate(field) {
     } else {
       field.classList.remove("error");
     }
-  } else if (field.name === "phone") {
+  } else if (field.classList.contains("phone-input")) {
     const phonePattern = /^\d+$/;
     if (!phonePattern.test(field.value.trim())) {
       field.classList.add("error");
