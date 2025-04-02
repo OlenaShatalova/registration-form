@@ -10,27 +10,27 @@
 .container {
   width: 100%;
   margin-inline: auto;
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .logo {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .event-info {
   display: grid;
   justify-self: start;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .event-title,
 .event-time {
   position: relative;
-  border: 0.4px solid var(--accent-color);
-  padding: 4px 8px;
+  border: 0.025rem solid var(--accent-color);
+  padding: 0.25rem 0.5rem;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.43;
   letter-spacing: 0.08em;
   color: var(--accent-color);
@@ -41,56 +41,56 @@
 .bottom-left,
 .bottom-right {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 0.125rem;
+  height: 0.125rem;
   background-color: var(--accent-color);
 }
 .top-left {
-  top: -1.25px;
-  left: -1.25px;
+  top: -0.078rem;
+  left: -0.078rem;
 }
 .top-right {
-  top: -1.25px;
-  right: -1.25px;
+  top: -0.078rem;
+  right: -0.078rem;
 }
 .bottom-left {
-  bottom: -1.25px;
-  left: -1.25px;
+  bottom: -0.078rem;
+  left: -0.078rem;
 }
 .bottom-right {
-  bottom: -1.25px;
-  right: -1.25px;
+  bottom: -0.078rem;
+  right: -0.078rem;
 }
 
 .title {
-  width: 89%;
+  max-width: 89%;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 2rem;
   line-height: 1.25;
-  margin-bottom: 16px;
-  /* margin-bottom: 1rem; */
+  margin-bottom: 1rem;
 }
 
 .text {
-  margin-bottom: 24px;
+  max-width: 20rem;
+  margin-bottom: 1.5rem;
 }
 
 /* стилі блоку для реєстрації */
 .register-wrapper {
-  width: 320px;
+  width: 20rem;
   display: grid;
-  gap: 24px;
+  gap: 1.5rem;
   background-color: var(--contrast);
   text-align: center;
   margin-inline: auto;
 }
 
 .box-shadow {
-  box-shadow: 0 0 20px 0 rgba(15, 124, 65, 0.2);
+  box-shadow: 0 0 1.25rem 0 rgba(15, 124, 65, 0.2);
 }
 
 .padding {
-  padding: 32px 20px;
+  padding: 2rem 1.25rem;
 }
 
 .position {
@@ -99,7 +99,7 @@
 
 .register-text {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.4;
 }
 
@@ -107,56 +107,54 @@
 .countdown {
   display: flex;
   justify-content: space-between;
-  padding-inline: 18px;
+  padding-inline: 1.125rem;
 }
 
 .timer span {
   display: block;
   text-align: center;
-  min-width: 45px;
+  min-width: 2.8125rem;
 }
 
 .timer > .value {
   position: relative;
   font-weight: 700;
-  font-size: 28px;
+  font-size: 1.75rem;
   line-height: 1.14;
 }
 
 .timer:not(:last-child) > .value::before {
   content: ":";
   position: absolute;
-  height: 2px;
-  top: -2px;
-  right: -15px;
+  height: 0.125rem;
+  top: -0.125rem;
+  right: -0.9375rem;
   border-radius: 50%;
   color: rgba(1, 1, 1, 0.2);
 }
 
 .timer > .label {
   font-weight: 600;
-  font-size: 8px;
+  font-size: 0.5rem;
 }
 
 /* стилі для форми */
 .register-form {
   display: none;
-  gap: 32px;
+  gap: 2rem;
 }
 
 .form-inputs {
   display: grid;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .input {
   width: 100%;
-  height: 48px;
+  height: 3rem;
   background-color: var(--bg-inputs);
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   font-size: inherit;
-  /* outline: none; */
-  /* transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1); */
 }
 
 .input:-webkit-autofill {
@@ -172,20 +170,20 @@
 
 .phone-input {
   position: relative;
-  padding-left: 32px;
+  padding-left: 2rem;
   background-color: var(--bg-inputs);
 }
 
 .flag-logo {
   position: absolute;
   top: 50%;
-  left: 16px;
+  left: 1rem;
   transform: translateY(-50%);
 }
 
 .checkbox-container {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   align-items: flex-start;
 }
 
@@ -193,9 +191,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2px;
-  width: 16px;
-  height: 16px;
+  padding: 0.125rem;
+  width: 1rem;
+  height: 1rem;
   flex-shrink: 0;
   border: 1px solid var(--accent-color);
 }
@@ -210,7 +208,7 @@
 }
 
 .text-checkbox {
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.33;
   text-align: left;
 }
@@ -220,7 +218,7 @@
 }
 
 .error {
-  border: 2px solid red;
+  border: 1px solid red;
   background-color: #ffe6e6;
   color: red;
 }
@@ -231,7 +229,7 @@
   font-size: inherit;
   font-weight: 700;
   line-height: 1.5;
-  padding: 16px 65.5px;
+  padding: 1rem 4.1rem;
   background-color: var(--accent-color);
   color: var(--contrast);
 }
@@ -246,11 +244,11 @@
   display: flex;
   justify-content: center;
   /* align-items: center; */
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(6.25rem);
   background: var(--contrast);
   opacity: 0;
   visibility: hidden;
-  transform: translateX(100%);
+  transform: translateX(6.25rem);
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
     transform 0.3s ease-in-out;
 }
@@ -263,22 +261,22 @@
 
 .modal-content {
   width: 100%;
-  padding: 29px 20px;
-  border-radius: 5px;
+  padding: 1.8125rem 1.25rem;
+  border-radius: 0.3125rem;
   position: relative;
 }
 
 .modal-content > .logo {
-  margin-bottom: 26px;
+  margin-bottom: 1.625rem;
 }
 
 .close-btn {
   position: absolute;
-  top: 29px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
-  padding: 7px;
+  top: 1.8125rem;
+  right: 1.25rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.4375rem;
 }
 
 /* ================================================== */
@@ -289,31 +287,32 @@
   }
 
   .container {
-    padding: 32px 29px;
+    padding: 2rem 1.8125rem;
   }
 
   .colomns-2 {
     display: flex;
-    gap: 32px;
+    gap: 2em;
+    /* margin-inline: auto; */
   }
 
   .logo {
-    margin-bottom: 22px;
+    margin-bottom: 1.375rem;
   }
 
   .section-text {
-    padding-top: 23px;
+    padding-top: 1.4375rem;
   }
 
   .event-info {
-    gap: 12px;
-    margin-bottom: 18px;
+    gap: 0.75rem;
+    margin-bottom: 1.125rem;
   }
 
   .event-title,
   .event-time {
-    padding: 8px 16px;
-    font-size: 16px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     line-height: 1.5;
   }
 
@@ -369,7 +368,7 @@
   }
 
   .colomns-2 {
-    gap: 104px;
+    gap: 101px;
   }
 
   .container {
