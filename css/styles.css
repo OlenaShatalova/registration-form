@@ -3,8 +3,8 @@
 /* mobile */
 .registration {
   background: var(--bg-color) url(../images/mobile-bg.png) no-repeat bottom
-    right/ cover;
-  height: 100vh;
+    right/ contain;
+  min-height: 100vh;
 }
 
 .container {
@@ -82,7 +82,7 @@
 
 .text {
   max-width: 20rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 /* стилі блоку для реєстрації */
@@ -152,6 +152,9 @@
 .register-form {
   display: none;
   gap: 2rem;
+}
+.register-form.show {
+  display: grid;
 }
 
 .form-inputs {
@@ -301,7 +304,7 @@
     padding: 2rem 1.8125rem;
   }
 
-  .colomns-2 {
+  .columns-2 {
     display: flex;
     gap: 2em;
     /* margin-inline: auto; */
@@ -363,6 +366,10 @@
     line-height: 1.22;
   }
 
+  .text {
+    padding-bottom: 0;
+  }
+
   .register-wrapper {
     width: 336px;
   }
@@ -384,7 +391,7 @@
     background-image: url(../images/desk-bg.png);
   }
 
-  .colomns-2 {
+  .columns-2 {
     gap: 101px;
   }
 

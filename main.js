@@ -1,102 +1,116 @@
-import { updateCountdown } from "./js/countdown.js";
-
-/// Запуск таймера (вставте свою дату в targetDate в ./js/countdown.js")
-updateCountdown();
+import * as countdown from "./js/countdown.js";
 
 const modal = document.querySelector("#modal-js");
 const openModalBtn = document.querySelector("#openModal-js");
 const closeModalBtn = document.querySelector("#closeModal-js");
 
 const modalContent = document.querySelector("#modalContent-js");
-const container = document.querySelector("#container-js");
-const registerWrapper = document.querySelector("#registerWrapper-js");
+const sectionContent = document.querySelector("#registerWrapper-js");
+const registerContainer = document.querySelector("#addFrom-js");
 const form = document.querySelector("#registerForm-js");
 
 ///====================================
-/// Логіка модального вікна
-openModalBtn.addEventListener("click", () => {
-  modal.classList.add("show"); //відкриваємо модальне вікно
-  modalContent.appendChild(registerWrapper); // додаємо вміст реєстрації в модальне вікно
-  registerWrapper.classList.remove("box-shadow", "padding", "position"); // прибираємо тінь та падінги з контенера реєстрації, переміщуємо по центру
-  openModalBtn.style.display = "none"; // приховуємо кнопку відкриття
-  form.style.display = "grid"; // показуємо форму реєстрації
-});
+// Відкриття/закриття модального вікна
+///====================================
+let isModalOpen = false;
 
-closeModalBtn.addEventListener("click", () => {
-  modal.classList.remove("show"); // закриваємо модальне вікно i повертаємо всі елементи на місце
-  container.appendChild(registerWrapper);
-  registerWrapper.classList.add("box-shadow", "padding", "position"); // додаємо тінь та падінги до контейнера реєстрації
-  openModalBtn.style.display = "block";
-  form.style.display = "none";
-});
+export const openModal = () => {
+  if (!isModalOpen) {
+    modalContent.appendChild(registerContainer); // додаємо вміст реєстрації в  вікно
+    form.classList.add("show"); // додаємо клас видимості до форми
+
+    isModalOpen = true;
+  }
+
+  document.body.classList.add("no-scroll");
+  modal.classList.add("show");
+};
+
+export const closeModal = () => {
+  if (isModalOpen) {
+    sectionContent.prepend(registerContainer); // повертаємо контейнер реєстрації на місце
+    form.classList.remove("show");
+
+    isModalOpen = false; // змінюємо стан на закритий
+  }
+
+  document.body.classList.remove("no-scroll"); // дозволяємо прокрутку фону
+  modal.classList.remove("show"); // закриваємо модальне вікно
+};
+
+openModalBtn.addEventListener("click", openModal);
+closeModalBtn.addEventListener("click", closeModal);
 
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 768 && modal.classList.contains("show")) {
-    modal.classList.remove("show"); // Закриваємо модальне вікно
-    container.appendChild(registerWrapper); // Повертаємо вміст реєстрації назад до контейнера
-    registerWrapper.classList.add("box-shadow", "padding", "position");
-
-    openModalBtn.style.display = "none";
-    form.style.display = "grid";
+  if (window.innerWidth > 768 && isModalOpen) {
+    closeModal();
   }
 });
 
 ///====================================
 // Валідація форми
-const nameInput = form.querySelector('input[name="name"]');
-const emailInput = form.querySelector('input[name="email"]');
-const phoneInput = form.querySelector('input[name="phone"]');
-const privacyCheckbox = form.querySelector(".custom-checkbox");
+///====================================
+
+// const nameInput = form.querySelector('input[name="name"]');
+// const emailInput = form.querySelector('input[name="email"]');
+// const phoneInput = form.querySelector('input[name="phone"]');
+const inputs = form.querySelectorAll("label");
+const customCheckbox = form.querySelector(".custom-checkbox");
 const submitButton = form.querySelector('button[type="submit"]');
 
+console.log(form, inputs, customCheckbox, submitButton);
+
 console.log(
-  form,
-  nameInput,
-  emailInput,
-  phoneInput,
-  privacyCheckbox,
-  submitButton
+  inputs.forEach((label) => {
+    console.log(label.input);
+  })
 );
 
-function deleteError(input) {
-  input.classList.remove("error");
-}
-
-function validate(field) {
-  if (field.name === "name") {
-    if (field.value.trim() === "") {
-      field.classList.add("error");
-    } else {
-      field.classList.remove("error");
-    }
-  } else if (field.name === "email") {
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(field.value.trim())) {
-      field.classList.add("error");
-    } else {
-      field.classList.remove("error");
-    }
-  } else if (field.classList.contains("phone-input")) {
-    const phonePattern = /^\d+$/;
-    if (!phonePattern.test(field.value.trim())) {
-      field.classList.add("error");
-    } else {
-      field.classList.remove("error");
-    }
-  } else if (field.type === "checkbox") {
-    if (!field.checked) {
-      field.classList.add("error");
-    } else {
-      field.classList.remove("error");
-    }
+const trim = (input) => {
+  if (input.type !== "checkbox") {
+    input.value = input.value.trim();
   }
-}
+};
 
-[nameInput, emailInput, phoneInput].forEach((field) => {
-  field.addEventListener("input", () => validate(field));
-});
+const deleteError = (input) => {
+  input.classList.remove("error");
+};
 
-privacyCheckbox.addEventListener("change", () => validate(privacyCheckbox));
+// const validate = (field) => {
+//   if (field.name === "name") {
+//     if (field.value.trim() === "") {
+//       field.classList.add("error");
+//     } else {
+//       field.classList.remove("error");
+//     }
+//   } else if (field.name === "email") {
+//     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+//     if (!emailPattern.test(field.value.trim())) {
+//       field.classList.add("error");
+//     } else {
+//       field.classList.remove("error");
+//     }
+//   } else if (field.classList.contains("phone-input")) {
+//     const phonePattern = /^\d+$/;
+//     if (!phonePattern.test(field.value.trim())) {
+//       field.classList.add("error");
+//     } else {
+//       field.classList.remove("error");
+//     }
+//   } else if (field.type === "checkbox") {
+//     if (!field.checked) {
+//       field.classList.add("error");
+//     } else {
+//       field.classList.remove("error");
+//     }
+//   }
+// };
+
+// [nameInput, emailInput, phoneInput].forEach((field) => {
+//   field.addEventListener("input", () => validate(field));
+// });
+
+// privacyCheckbox.addEventListener("change", () => validate(privacyCheckbox));
 
 ///====================================
 ////  відправка форми реєстрації

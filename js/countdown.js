@@ -39,3 +39,6 @@ export function updateCountdown() {
     }
   }, 300);
 }
+
+/// Запуск таймера (вставте свою дату в targetDate в ./js/countdown.js")
+updateCountdown();
