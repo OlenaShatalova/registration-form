@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./images/GO.svg" />
+    <title>Форма реєстрації</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <section class="registration">
+      <div id="container-js" class="container">
+        <img class="logo" src="./images/logo.svg" alt="Logo" />
+
+        <div class="event-info">
+          <span class="event-title border-span">Безоплатний вебінар</span>
+          <time class="event-time border-span"
+            >Старт: <strong>10 квітня 19:30</strong></time
+          >
+        </div>
+
+        <h2 class="title">Навчіться створювати Excel-таблиці на pro-рівні</h2>
+        <p class="text">
+          Опануйте функціонал Microsoft Excel, автоматизуйте свою роботу<br />
+          та створюйте таблиці швидко <br />
+          і в задоволення
+        </p>
+
+        <div
+          id="registerWrapper-js"
+          class="register-wrapper box-shadow padding"
+        >
+          <h3 class="register-text">Реєструйся просто зараз</h3>
+
+          <div id="countdown-js" class="countdown">
+            <div class="timer">
+              <span class="value" data-days>00</span>
+              <span class="label">днів</span>
+            </div>
+            <div class="timer">
+              <span class="value" data-hours>00</span>
+              <span class="label">годин</span>
+            </div>
+            <div class="timer">
+              <span class="value" data-minutes>00</span>
+              <span class="label">хвилин</span>
+            </div>
+            <div class="timer">
+              <span class="value" data-seconds>00</span>
+              <span class="label">секунд</span>
+            </div>
+          </div>
+
+          <form id="registerForm-js" class="register-form">
+            <div class="form-inputs">
+              <input
+                class="input"
+                type="text"
+                name="name"
+                placeholder="Введи своє ім’я"
+                required
+              />
+              <input
+                class="input"
+                type="email"
+                name="email"
+                placeholder="Введи свій E-mail"
+                required
+              />
+              <div class="phone-input">
+                <input
+                  class="input"
+                  type="tel"
+                  name="phone"
+                  placeholder="+380 95 -- -- ---"
+                  required
+                />
+                <img class="flag-logo" src="./images/flag.svg" alt="flag" />
+              </div>
+
+              <label class="checkbox-container">
+                <input
+                  class="visually-hidden check"
+                  id="privacy"
+                  name="privacy"
+                  type="checkbox"
+                  required
+                />
+                <!-- <label class="checkbox-label" for="privacy"> -->
+                <span class="custom-checkbox">
+                  <svg class="input-checkbox-icon" width="8" height="5">
+                    <!-- <use href="./images/icons.svg#icon-checkbox"></use> -->
+                  </svg>
+                </span>
+                <span class="text-checkbox">
+                  Згоден з <a href="#">Політикв конфіденційності</a> та
+                  <a href="#">Умови користування послугами</a>
+                </span>
+                <!-- </label> -->
+              </label>
+            </div>
+
+            <button class="button" type="submit">Зареєструватися</button>
+          </form>
+
+          <button id="openModal-js" class="button" type="button">
+            Зареєструватися
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div id="modal-js" class="modal">
+      <div id="modalContent-js" class="modal-content">
+        <img class="logo" src="./images/logo.svg" alt="Logo" />
+
+        <button id="closeModal-js" class="close-btn" type="button">
+          <img class="close-icone" src="./images/close-btn.svg" alt="close" />
+        </button>
+        <!-- Сюди буде переміщуватися форма -->
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
