@@ -444,3 +444,9 @@
     background-image: url(../images/desk-bg@2x.png);
   }
 }
+
+/* .input:invalid {
+  border: 1px solid red;
+  background-color: #ffe6e6;
+  color: red;
+} */

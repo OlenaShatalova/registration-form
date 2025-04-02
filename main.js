@@ -1,4 +1,3 @@
-console.log("Hello, World!");
 import { updateCountdown } from "./js/countdown.js";
 
 /// Запуск таймера (вставте свою дату в targetDate в ./js/countdown.js")
