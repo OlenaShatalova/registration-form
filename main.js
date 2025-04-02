@@ -43,19 +43,80 @@ window.addEventListener("resize", () => {
 
 ///====================================
 // Валідація форми
+const nameInput = form.querySelector('input[name="name"]');
+const emailInput = form.querySelector('input[name="email"]');
+const phoneInput = form.querySelector('input[name="phone"]');
+const privacyCheckbox = form.querySelector(".custom-checkbox");
+const submitButton = form.querySelector('button[type="submit"]');
+
+console.log(nameInput, emailInput, phoneInput, privacyCheckbox, submitButton);
+
+function deleteError(input) {
+  input.classList.remove("error");
+}
+
+function validate(field) {
+  if (field.name === "name") {
+    if (field.value.trim() === "") {
+      field.classList.add("error");
+    } else {
+      field.classList.remove("error");
+    }
+  } else if (field.name === "email") {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(field.value.trim())) {
+      field.classList.add("error");
+    } else {
+      field.classList.remove("error");
+    }
+  } else if (field.name === "phone") {
+    const phonePattern = /^\d+$/;
+    if (!phonePattern.test(field.value.trim())) {
+      field.classList.add("error");
+    } else {
+      field.classList.remove("error");
+    }
+  } else if (field.type === "checkbox") {
+    if (!field.checked) {
+      field.classList.add("error");
+    } else {
+      field.classList.remove("error");
+    }
+  }
+}
+
+[nameInput, emailInput, phoneInput].forEach((field) => {
+  field.addEventListener("input", () => validate(field));
+});
+
+privacyCheckbox.addEventListener("change", () => validate(privacyCheckbox));
 
 ///====================================
-//// форма реєстрації
-form.addEventListener("submit", (e) => {
+////  відправка форми реєстрації
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const formData = {
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone.value,
-  };
+  // Перевіряємо всі поля перед відправкою
+  let isValid = true;
+  [nameInput, emailInput, phoneInput, privacyCheckbox].forEach((input) => {
+    validate(input); // Викликаємо валідацію для кожного поля
+    if (input.classList.contains("error")) {
+      isValid = false;
+    }
+  });
 
-  sendData(formData, form); // викликаємо функцію для відправки даних
+  // Якщо всі поля пройшли валідацію, відправляємо дані
+  if (isValid) {
+    const formData = {
+      name: nameInput.value,
+      email: emailInput.value,
+      phone: phoneInput.value,
+    };
+
+    sendData(formData, form); // Викликаємо функцію для відправки даних
+  } else {
+    alert("Будь ласка, виправте помилки у формі.");
+  }
 });
 //
 
