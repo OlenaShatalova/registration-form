@@ -49,7 +49,14 @@ const phoneInput = form.querySelector('input[name="phone"]');
 const privacyCheckbox = form.querySelector(".custom-checkbox");
 const submitButton = form.querySelector('button[type="submit"]');
 
-console.log(nameInput, emailInput, phoneInput, privacyCheckbox, submitButton);
+console.log(
+  form,
+  nameInput,
+  emailInput,
+  phoneInput,
+  privacyCheckbox,
+  submitButton
+);
 
 function deleteError(input) {
   input.classList.remove("error");
@@ -104,6 +111,9 @@ form.addEventListener("submit", async (e) => {
       isValid = false;
     }
   });
+
+  // Логування, чи форма пройшла валідацію
+  console.log("Is form valid:", isValid);
 
   // Якщо всі поля пройшли валідацію, відправляємо дані
   if (isValid) {
