@@ -281,25 +281,124 @@
   padding: 7px;
 }
 
-/* ========== */
+/* ================================================== */
 /* tablet */
 @media screen and (min-width: 768px) {
   .registration {
     background-image: url(../images/tabl-bg.png);
   }
 
+  .container {
+    padding: 32px 29px;
+  }
+
+  .colomns-2 {
+    display: flex;
+    gap: 32px;
+  }
+
+  .logo {
+    margin-bottom: 22px;
+  }
+
+  .section-text {
+    padding-top: 23px;
+  }
+
+  .event-info {
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .event-title,
+  .event-time {
+    padding: 8px 16px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .title {
+    margin-bottom: 24px;
+    font-size: 36px;
+    line-height: 1.22;
+  }
+
+  .register-wrapper {
+    width: 336px;
+  }
+
+  .register-wrapper > .button {
+    display: none;
+  }
+
   .register-form {
     display: grid;
-    gap: 5px;
-    background-color: aliceblue;
+    gap: 32px;
   }
 }
 
-/* ========== */
+/* ================================================== */
 /* desktop */
 @media screen and (min-width: 1440px) {
   .registration {
     background-image: url(../images/desk-bg.png);
+  }
+
+  .colomns-2 {
+    gap: 104px;
+  }
+
+  .container {
+    padding: 40px 112px;
+  }
+
+  .logo {
+    margin-bottom: 40px;
+  }
+
+  .section-text {
+    padding-top: 48px;
+  }
+
+  .event-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 42px;
+  }
+
+  .title {
+    font-size: 56px;
+    line-height: 1.21;
+    margin-bottom: 40px;
+  }
+
+  .desktop-break {
+    display: inline;
+  }
+
+  .text {
+    font-size: 20px;
+    line-height: 1.4;
+    width: 554px;
+  }
+
+  .to-tablet-break {
+    display: none;
+  }
+
+  .register-wrapper {
+    flex-shrink: 0;
+    width: 488px;
+    padding: 52px;
+  }
+
+  .register-text {
+    font-size: 28px;
+  }
+
+  .timer > .value {
+    font-size: 32px;
+    line-height: 1.13;
   }
 }
 
@@ -322,14 +421,3 @@
     background-image: url(../images/desk-bg@2x.png);
   }
 }
-
-/* @media (min-width: 768px) {
-  .mobile-btn {
-    display: none;
-  } */
-/* Ховаємо кнопку на великих екранах */
-/* #formWrapper {
-    display: block;
-  }  */
-/* Показуємо форму */
-/* } */

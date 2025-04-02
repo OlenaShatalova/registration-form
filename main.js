@@ -23,7 +23,6 @@ const emailInput = form.querySelector('input[type="email"]');
 const phoneInput = form.querySelector('input[name="phone"]');
 const checkbox = form.querySelector('input[type="checkbox"]');
 const submitButton = form.querySelector("button[type='submit']");
-console.log(nameInput);
 
 ///====================================
 /// Логіка модального вікна
@@ -43,6 +42,21 @@ closeModalBtn.addEventListener("click", () => {
   form.style.display = "none";
 });
 
+// window.addEventListener("resize", () => {
+//   if (window.innerWidth > 768 && modal.classList.contains("show")) {
+//     modal.classList.remove("show"); // Закриваємо модальне вікно
+//     container.appendChild(registerWrapper); // Повертаємо вміст реєстрації назад до контейнера
+//     registerWrapper.classList.add("box-shadow", "padding", "position");
+
+//     openModalBtn.style.display = "none";
+//     form.style.display = "grid";
+//   }
+// });
+
+///====================================
+// Валідація форми
+
+///====================================
 //// форма реєстрації
 form.addEventListener("submit", (e) => {
   e.preventDefault();
