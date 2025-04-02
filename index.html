@@ -16,7 +16,10 @@
   <body>
     <section class="registration">
       <div id="container-js" class="container">
-        <img class="logo" src="./images/logo.svg" alt="Logo" />
+        <svg class="logo" width="100" height="30">
+          <use href="./images/sprite.svg#icon-logo"></use>
+        </svg>
+        <!-- <img class="logo" src="./images/logo.svg" alt="Logo" /> -->
 
         <div class="event-info">
           <span class="event-title border-span">Безоплатний вебінар</span>
@@ -34,7 +37,7 @@
 
         <div
           id="registerWrapper-js"
-          class="register-wrapper box-shadow padding"
+          class="register-wrapper box-shadow padding position"
         >
           <h3 class="register-text">Реєструйся просто зараз</h3>
 
@@ -63,7 +66,7 @@
                 class="input"
                 type="text"
                 name="name"
-                placeholder="Введи своє ім’я"
+                placeholder="Введи своє ім&#39;я"
                 required
               />
               <input
@@ -81,7 +84,10 @@
                   placeholder="+380 95 -- -- ---"
                   required
                 />
-                <img class="flag-logo" src="./images/flag.svg" alt="flag" />
+                <svg class="flag-logo" width="24" height="16">
+                  <use href="./images/sprite.svg#icon-flag"></use>
+                </svg>
+                <!-- <img class="flag-logo" src="./images/flag.svg" alt="flag" /> -->
               </div>
 
               <label class="checkbox-container">
@@ -92,17 +98,15 @@
                   type="checkbox"
                   required
                 />
-                <!-- <label class="checkbox-label" for="privacy"> -->
                 <span class="custom-checkbox">
-                  <svg class="input-checkbox-icon" width="8" height="5">
-                    <!-- <use href="./images/icons.svg#icon-checkbox"></use> -->
+                  <svg class="input-checkbox-icon" width="12" height="10">
+                    <use href="./images/sprite.svg#icon-check-mark"></use>
                   </svg>
                 </span>
                 <span class="text-checkbox">
-                  Згоден з <a href="#">Політикв конфіденційності</a> та
+                  Згоден з <a href="#">Політика конфіденційності</a> та
                   <a href="#">Умови користування послугами</a>
                 </span>
-                <!-- </label> -->
               </label>
             </div>
 
@@ -118,10 +122,13 @@
 
     <div id="modal-js" class="modal">
       <div id="modalContent-js" class="modal-content">
-        <img class="logo" src="./images/logo.svg" alt="Logo" />
-
+        <svg class="logo" width="100" height="30">
+          <use href="./images/sprite.svg#icon-logo"></use>
+        </svg>
         <button id="closeModal-js" class="close-btn" type="button">
-          <img class="close-icone" src="./images/close-btn.svg" alt="close" />
+          <svg class="close-icone" width="18" height="18">
+            <use href="./images/sprite.svg#icon-close-btn"></use>
+          </svg>
         </button>
         <!-- Сюди буде переміщуватися форма -->
       </div>
