@@ -20,28 +20,46 @@ const labels = form.querySelectorAll("label");
 ///====================================
 let isModalOpen = false;
 
-export const openModal = () => {
+const openModal = () => {
   if (!isModalOpen) {
     modalContent.appendChild(registerContainer); // додаємо вміст реєстрації в  вікно
     form.classList.add("show"); // додаємо клас видимості до форми
 
     isModalOpen = true;
+    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("click", handleOutsideClick);
   }
 
   document.body.classList.add("no-scroll");
   modal.classList.add("show");
+  handleScrollSmallHeight();
 };
 
-export const closeModal = () => {
+const closeModal = () => {
   if (isModalOpen) {
     sectionContent.prepend(registerContainer); // повертаємо контейнер реєстрації на місце
     form.classList.remove("show");
 
-    isModalOpen = false; // змінюємо стан на закритий
+    isModalOpen = false;
   }
 
-  document.body.classList.remove("no-scroll"); // дозволяємо прокрутку фону
-  modal.classList.remove("show"); // закриваємо модальне вікно
+  document.body.classList.remove("no-scroll");
+  modal.classList.remove("show");
+  document.removeEventListener("click", handleOutsideClick);
+};
+
+const handleOutsideClick = (event) => {
+  if (event.target === modal) {
+    closeModal();
+  }
+};
+
+const handleScrollSmallHeight = () => {
+  if (window.innerHeight < 700) {
+    modal.style.alignItems = "flex-start";
+  } else {
+    modal.style.alignItems = "center";
+  }
 };
 
 openModalBtn.addEventListener("click", openModal);
@@ -50,6 +68,9 @@ closeModalBtn.addEventListener("click", closeModal);
 window.addEventListener("resize", () => {
   if (window.innerWidth > 768 && isModalOpen) {
     closeModal();
+  }
+  if (isModalOpen) {
+    handleScrollSmallHeight();
   }
 });
 
@@ -106,41 +127,33 @@ const validateForm = () => {
   return isValidForm;
 };
 
-labels.forEach((label) => {
-  const input = label.children[0];
-  if (input.type === "checkbox") {
-    input.addEventListener("change", () => {
-      validateForm();
-    });
-  } else {
-    input.addEventListener("input", () => {
-      validateForm();
-    });
-  }
-});
-
 form.addEventListener("submit", (e) => {
   const isValid = validateForm();
-
-  console.log("Is form valid:", isValid);
   e.preventDefault();
 
-  // Якщо всі поля пройшли валідацію, відправляємо дані
+  labels.forEach((label) => {
+    const input = label.children[0];
+    if (input.type === "checkbox") {
+      input.addEventListener("change", () => {
+        validateForm();
+      });
+    } else {
+      input.addEventListener("input", () => {
+        validateForm();
+      });
+    }
+  });
+
   if (!isValid) {
-    console.log("Форма не валідна");
-    // alert("Будь ласка, виправте помилки у формі.");
+    // console.log("Форма не валідна");
   } else {
     const { name, email, tel } = e.target.elements;
-    console.log(e.target.elements);
 
-    console.log(name, email, tel);
     const formData = {
       name: name.value,
       email: email.value,
       phone: tel.value,
     };
-
-    console.log(formData);
 
     sendData(formData, form);
   }
@@ -158,6 +171,6 @@ async function sendData(formData, form) {
     alert("Форма успішно відправлена!");
     form.reset();
   } catch (error) {
-    alert("Помилка відправки форми");
+    alert("Помилка відправки форми (не існуючий сервер)");
   }
 }
