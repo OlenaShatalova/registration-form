@@ -90,27 +90,24 @@
   width: 20rem;
   display: grid;
   gap: 1.5rem;
+  padding: 2rem 1.25rem;
   background-color: var(--contrast);
   text-align: center;
   margin-inline: auto;
-}
-
-.box-shadow {
   box-shadow: 0 0 1.25rem 0 rgba(15, 124, 65, 0.2);
-}
-
-.padding {
-  padding: 2rem 1.25rem;
-}
-
-.position {
   margin-inline: 0;
+}
+
+.portableContainer {
+  display: grid;
+  gap: 1.5rem;
 }
 
 .register-text {
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.4;
+  text-align: center;
 }
 
 /* стилі для лічильника */
@@ -181,7 +178,7 @@
   line-height: 1.5;
 }
 
-.phone-input {
+.phone-label {
   position: relative;
   padding-left: 2rem;
   background-color: var(--bg-inputs);
@@ -232,7 +229,6 @@
 
 .error {
   border: 1px solid red;
-  background-color: #ffe6e6;
   color: red;
 }
 
@@ -255,13 +251,12 @@
   width: 100%;
   height: 100%;
   display: flex;
+  backdrop-filter: blur(0.5rem);
   justify-content: center;
-  /* align-items: center; */
-  backdrop-filter: blur(6.25rem);
-  background: var(--contrast);
+  align-items: center;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(6.25rem);
+  transform: translate(6.25rem, -6.25rem);
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out,
     transform 0.3s ease-in-out;
 }
@@ -269,14 +264,15 @@
 .modal.show {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translate(0, 0);
 }
 
 .modal-content {
-  width: 100%;
-  padding: 1.8125rem 1.25rem;
-  border-radius: 0.3125rem;
   position: relative;
+  width: 100%;
+  height: 42.5rem;
+  padding: 1.8125rem 1.25rem;
+  background: var(--contrast);
 }
 
 .modal-content > .logo {
@@ -307,7 +303,6 @@
   .columns-2 {
     display: flex;
     gap: 2em;
-    /* margin-inline: auto; */
   }
 
   .logo {
@@ -435,14 +430,14 @@
     display: inline;
   }
 
+  .to-tablet-break {
+    display: none;
+  }
+
   .text {
     font-size: 20px;
     line-height: 1.4;
     max-width: 34.6rem;
-  }
-
-  .to-tablet-break {
-    display: none;
   }
 
   .register-wrapper {
@@ -487,9 +482,3 @@
     background-image: url(../images/desk-bg@2x.png);
   }
 }
-
-/* .input:invalid {
-  border: 1px solid red;
-  background-color: #ffe6e6;
-  color: red;
-} */

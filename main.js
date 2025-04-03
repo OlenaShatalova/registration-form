@@ -1,13 +1,19 @@
 import * as countdown from "./js/countdown.js";
 
+///====================================
+// Селектори
+///====================================
+// для  відкриття модального вікна
 const modal = document.querySelector("#modal-js");
 const openModalBtn = document.querySelector("#openModal-js");
 const closeModalBtn = document.querySelector("#closeModal-js");
-
+// для переміщення контейнера реєстрації
 const modalContent = document.querySelector("#modalContent-js");
 const sectionContent = document.querySelector("#registerWrapper-js");
-const registerContainer = document.querySelector("#addFrom-js");
+const registerContainer = document.querySelector("#portableContainer-js");
 const form = document.querySelector("#registerForm-js");
+// для валідації та відправки форми
+const labels = form.querySelectorAll("label");
 
 ///====================================
 // Відкриття/закриття модального вікна
@@ -48,106 +54,100 @@ window.addEventListener("resize", () => {
 });
 
 ///====================================
-// Валідація форми
+// Валідація та відправка форми реєстрації
 ///====================================
 
-// const nameInput = form.querySelector('input[name="name"]');
-// const emailInput = form.querySelector('input[name="email"]');
-// const phoneInput = form.querySelector('input[name="phone"]');
-const inputs = form.querySelectorAll("label");
-const customCheckbox = form.querySelector(".custom-checkbox");
-const submitButton = form.querySelector('button[type="submit"]');
+const validateForm = () => {
+  let isValidForm = true;
 
-console.log(form, inputs, customCheckbox, submitButton);
+  const deleteError = (i) => {
+    i.classList.remove("error");
+  };
 
-console.log(
-  inputs.forEach((label) => {
-    console.log(label.input);
-  })
-);
+  const addError = (i) => {
+    i.classList.add("error");
+    isValidForm = false;
+  };
 
-const trim = (input) => {
-  if (input.type !== "checkbox") {
-    input.value = input.value.trim();
-  }
-};
+  labels.forEach((label) => {
+    const input = label.children[0]; // отримуємо інпут з label (має бути перша дитина)
 
-const deleteError = (input) => {
-  input.classList.remove("error");
-};
+    if (input.type === "checkbox") {
+      deleteError(label.children[1]);
+      if (!input.checked) {
+        addError(label.children[1]);
+      }
+    } else {
+      deleteError(label);
 
-// const validate = (field) => {
-//   if (field.name === "name") {
-//     if (field.value.trim() === "") {
-//       field.classList.add("error");
-//     } else {
-//       field.classList.remove("error");
-//     }
-//   } else if (field.name === "email") {
-//     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-//     if (!emailPattern.test(field.value.trim())) {
-//       field.classList.add("error");
-//     } else {
-//       field.classList.remove("error");
-//     }
-//   } else if (field.classList.contains("phone-input")) {
-//     const phonePattern = /^\d+$/;
-//     if (!phonePattern.test(field.value.trim())) {
-//       field.classList.add("error");
-//     } else {
-//       field.classList.remove("error");
-//     }
-//   } else if (field.type === "checkbox") {
-//     if (!field.checked) {
-//       field.classList.add("error");
-//     } else {
-//       field.classList.remove("error");
-//     }
-//   }
-// };
+      const value = input.value.trim();
 
-// [nameInput, emailInput, phoneInput].forEach((field) => {
-//   field.addEventListener("input", () => validate(field));
-// });
-
-// privacyCheckbox.addEventListener("change", () => validate(privacyCheckbox));
-
-///====================================
-////  відправка форми реєстрації
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  // Перевіряємо всі поля перед відправкою
-  let isValid = true;
-  [nameInput, emailInput, phoneInput, privacyCheckbox].forEach((input) => {
-    validate(input); // Викликаємо валідацію для кожного поля
-    if (input.classList.contains("error")) {
-      isValid = false;
+      if (value === "") {
+        addError(label);
+      } else {
+        if (input.type === "text" && value.length < 3) {
+          addError(label);
+        } else if (input.type === "email") {
+          const emailPattern =
+            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          if (!emailPattern.test(value)) {
+            addError(label);
+          }
+        } else if (input.type === "tel") {
+          const phonePattern = /^\+?\d{12}$/;
+          if (!phonePattern.test(value)) {
+            addError(label);
+          }
+        }
+      }
     }
   });
 
-  // Логування, чи форма пройшла валідацію
-  console.log("Is form valid:", isValid);
+  return isValidForm;
+};
 
-  // Якщо всі поля пройшли валідацію, відправляємо дані
-  if (isValid) {
-    const formData = {
-      name: nameInput.value,
-      email: emailInput.value,
-      phone: phoneInput.value,
-    };
-
-    sendData(formData, form); // Викликаємо функцію для відправки даних
+labels.forEach((label) => {
+  const input = label.children[0];
+  if (input.type === "checkbox") {
+    input.addEventListener("change", () => {
+      validateForm();
+    });
   } else {
-    alert("Будь ласка, виправте помилки у формі.");
+    input.addEventListener("input", () => {
+      validateForm();
+    });
   }
 });
-//
+
+form.addEventListener("submit", (e) => {
+  const isValid = validateForm();
+
+  console.log("Is form valid:", isValid);
+  e.preventDefault();
+
+  // Якщо всі поля пройшли валідацію, відправляємо дані
+  if (!isValid) {
+    console.log("Форма не валідна");
+    // alert("Будь ласка, виправте помилки у формі.");
+  } else {
+    const { name, email, tel } = e.target.elements;
+    console.log(e.target.elements);
+
+    console.log(name, email, tel);
+    const formData = {
+      name: name.value,
+      email: email.value,
+      phone: tel.value,
+    };
+
+    console.log(formData);
+
+    sendData(formData, form);
+  }
+});
 
 async function sendData(formData, form) {
   try {
-    // console.log("Відправка даних на endpoint:", formData); // Виводимо дані перед відправкою
-
     const response = await fetch("https://example.com/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

@@ -53,13 +53,8 @@
             </p>
           </div>
 
-          <div
-            id="registerWrapper-js"
-            class="register-wrapper box-shadow padding position"
-          >
-            <div id="addFrom-js" class="addFrom">
-              <!-- id="for-append-node" -->
-              <!-- div id="mob-menu-content-for" -->
+          <div id="registerWrapper-js" class="register-wrapper">
+            <div id="portableContainer-js" class="portableContainer">
               <h3 class="register-text">Реєструйся просто зараз</h3>
 
               <div id="countdown-js" class="countdown">
@@ -81,7 +76,7 @@
                 </div>
               </div>
 
-              <form id="registerForm-js" class="register-form">
+              <form id="registerForm-js" class="register-form" novalidate>
                 <div class="form-inputs">
                   <label class="label">
                     <input
@@ -105,14 +100,13 @@
                     <input
                       class="input"
                       type="tel"
-                      name="phone"
+                      name="tel"
                       placeholder="+380 95 -- -- ---"
                       required
                     />
                     <svg class="flag-logo" width="24" height="16">
                       <use href="./images/sprite.svg#icon-flag"></use>
                     </svg>
-                    <!-- <img class="flag-logo" src="./images/flag.svg" alt="flag" /> -->
                   </label>
 
                   <label class="checkbox-container">
@@ -148,8 +142,7 @@
     </section>
 
     <div id="modal-js" class="modal">
-      <!-- id="mob-menu-overlay" -->
-      <div class="modal-content">
+      <div class="modal-content container">
         <svg class="logo" width="100" height="30">
           <use href="./images/sprite.svg#icon-logo"></use>
         </svg>
@@ -160,7 +153,6 @@
         </button>
 
         <div id="modalContent-js" class="modalContent"></div>
-        <!-- id="mob-menu-content"  -->
       </div>
     </div>
     <script type="module" src="./main.js"></script>
