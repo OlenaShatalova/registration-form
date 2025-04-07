@@ -383,7 +383,7 @@
 }
 
 /* desktop */
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 90rem) {
   .registration {
     background-image: url(../images/desk-bg.png);
   }
