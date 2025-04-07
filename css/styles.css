@@ -4,48 +4,58 @@
 .registration {
   background: var(--bg-color) url(../images/mobile-bg.png) no-repeat bottom
     right/ contain;
+  width: 100vw;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .container {
-  width: 100%;
-  max-width: 360px;
-  margin-inline: auto;
-  padding: 1.25rem;
+  min-width: 22.5rem;
+  max-width: 48rem;
+  height: 100vh;
+  padding: 1.25rem clamp(1.25rem, 5.55vw, 2rem);
+
+  display: grid;
+  grid-template-rows: 1.875rem 1fr;
+  gap: clamp(1rem, 2.864vw, 1.37rem);
 }
 
-.logo {
-  margin-bottom: 1rem;
+.columns-2 {
+  height: 100%;
+  display: grid;
+  gap: clamp(1.5rem, 4.17vw, 2rem);
+  justify-content: center;
+}
+
+.section-text {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .event-info {
-  display: grid;
-  justify-self: start;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  display: inline-flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 1.89vw, 0.75rem);
 }
 
 .event-title,
 .event-time {
   position: relative;
-  border: 0.025rem solid var(--accent-color);
-  height: 28px;
+  height: clamp(1.875rem, 6.51vw, 2.25rem);
+  align-self: self-start;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-inline: clamp(0.5rem, 2.15vw, 1rem);
+  border: 0.4px solid var(--accent-color);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.43;
   letter-spacing: 0.08em;
   color: var(--accent-color);
 }
-.event-title {
-  width: 196px;
-}
-.event-time {
-  width: 186px;
-}
-
 .top-left,
 .top-right,
 .bottom-left,
@@ -73,16 +83,13 @@
 }
 
 .title {
-  max-width: 89%;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: clamp(2rem, 6.788vw, 2.25rem);
   line-height: 1.25;
-  margin-bottom: 1rem;
 }
 
 .text {
-  max-width: 20rem;
-  padding-bottom: 1.5rem;
+  width: 20rem;
 }
 
 /* стилі блоку для реєстрації */
@@ -94,8 +101,8 @@
   background-color: var(--contrast);
   text-align: center;
   margin-inline: auto;
-  box-shadow: 0 0 1.25rem 0 rgba(15, 124, 65, 0.2);
-  margin-inline: 0;
+  box-shadow: 0 0 20px 0 rgba(15, 124, 65, 0.2);
+  margin-bottom: auto;
 }
 
 .portableContainer {
@@ -145,13 +152,29 @@
   font-size: 0.5rem;
 }
 
+/* стилі кнопки для відкриття модал. та відправки даних форми */
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: clamp(3.5rem, 12vw, 4rem);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1.5;
+  background-color: var(--accent-color);
+  color: var(--contrast);
+}
+
 /* стилі для форми */
 .register-form {
   display: none;
-  gap: 2rem;
 }
+
 .register-form.show {
   display: grid;
+  gap: 2rem;
 }
 
 .form-inputs {
@@ -234,29 +257,19 @@
   color: red;
 }
 
-/* стилі кнопки для відкриття модал. та відправки даних форми */
-.button {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: 700;
-  line-height: 1.5;
-  padding: 1rem 4.1rem;
-  background-color: var(--accent-color);
-  color: var(--contrast);
-}
-
 /* стилі для модального */
 .modal {
   position: fixed;
   z-index: 5;
   inset: 0;
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   overflow-y: auto;
   display: flex;
   backdrop-filter: blur(0.5rem);
   justify-content: center;
   align-items: center;
+
   opacity: 0;
   visibility: hidden;
   transform: translate(6.25rem, -6.25rem);
@@ -272,16 +285,14 @@
 
 .modal-content {
   position: relative;
-  align-items: flex-start;
-  width: 100%;
-  max-height: 75%;
-  min-height: 42.5rem;
+  width: 22.5rem;
+  height: 42.5rem;
   padding: 1.8125rem 1.25rem;
   background: var(--contrast);
 }
 
-.modal-content > .logo {
-  margin-bottom: 1.625rem;
+.modal-content.container {
+  gap: 3.625rem;
 }
 
 .close-btn {
@@ -295,45 +306,34 @@
 
 /* ================================================== */
 /* tablet */
-@media screen and (min-width: 768px) {
+/* ================================================== */
+@media screen and (min-width: 48rem) {
   .registration {
     background-image: url(../images/tabl-bg.png);
   }
 
   .container {
-    max-width: 768px;
-    padding: 2rem 1.8125rem;
+    max-width: 90rem;
+    padding: 1.81rem 4.17%;
+    gap: clamp(1.37rem, 2.777vw, 2.5rem);
   }
 
   .columns-2 {
-    display: flex;
-    gap: 2em;
-  }
-
-  .logo {
-    margin-bottom: 1.375rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3%;
   }
 
   .section-text {
-    padding-top: 1.4375rem;
-  }
-
-  .event-info {
-    gap: 0.75rem;
-    margin-bottom: 1.125rem;
+    grid-template-rows: repeat(3, auto);
+    gap: 1.5rem;
+    margin-bottom: 10.25rem;
   }
 
   .event-title,
   .event-time {
     font-size: 1rem;
     line-height: 1.5;
-    height: 36px;
-  }
-  .event-title {
-    width: 238px;
-  }
-  .event-time {
-    width: 226px;
   }
 
   .top-left,
@@ -361,17 +361,15 @@
   }
 
   .title {
-    margin-bottom: 24px;
-    font-size: 36px;
+    font-size: clamp(2.25rem, 3.888vw, 3.5rem);
     line-height: 1.22;
   }
 
-  .text {
-    padding-bottom: 0;
-  }
-
   .register-wrapper {
-    width: 336px;
+    width: clamp(21rem, 64%, 36.15rem);
+    height: clamp(32.375rem, 67.44vw, 36.25rem);
+    margin-inline: auto;
+    padding-inline: 5.95%;
   }
 
   .register-wrapper > .button {
@@ -380,55 +378,36 @@
 
   .register-form {
     display: grid;
-    gap: 32px;
+    gap: 2rem;
   }
 }
 
-/* ================================================== */
 /* desktop */
 @media screen and (min-width: 1440px) {
   .registration {
     background-image: url(../images/desk-bg.png);
   }
 
-  .columns-2 {
-    gap: 101px;
-  }
-
   .container {
-    max-width: 1440px;
-    padding: 40px 112px;
+    padding: 2.5rem 7rem;
   }
 
-  .logo {
-    margin-bottom: 40px;
+  .columns-2 {
+    gap: max(6.5rem, 7.222vw);
+    grid-template-columns: minmax(39rem, 1fr) 1fr;
   }
 
   .section-text {
-    padding-top: 48px;
+    padding-top: 3rem;
   }
 
   .event-info {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 42px;
-  }
-  .event-title,
-  .event-time {
-    height: 40px;
-  }
-  .event-title {
-    width: 238px;
-  }
-  .event-time {
-    width: 230px;
+    flex-direction: row;
+    gap: 1.875rem;
   }
 
   .title {
-    max-width: 97%;
-    font-size: 56px;
     line-height: 1.21;
-    margin-bottom: 40px;
   }
 
   .desktop-break {
@@ -440,15 +419,20 @@
   }
 
   .text {
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 1.4;
-    max-width: 34.6rem;
+    width: 100%;
   }
 
   .register-wrapper {
-    flex-shrink: 0;
-    width: 488px;
+    width: 30.5rem;
+    height: clamp(36.24rem, 72.5vh, 48rem);
     padding: 52px;
+    padding: 3.25rem;
+  }
+
+  .portableContainer {
+    gap: 3vh;
   }
 
   .register-text {
