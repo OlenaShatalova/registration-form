@@ -37,7 +37,7 @@ export function updateCountdown() {
       document.querySelector("[data-seconds]").textContent =
         addLeadingZero(seconds);
     }
-  }, 300);
+  }, 1000);
 }
 
 /// Запуск таймера (вставте свою дату в targetDate в ./js/countdown.js")
