@@ -1,7 +1,7 @@
 /// Таймер зворотного відліку
 
 const countdown = document.querySelector("#countdown-js");
-const targetDate = new Date("2026-04-10T19:30:00"); /// (вставте свою дату)
+const targetDate = new Date("2025-06-10T19:30:00"); /// (вставте свою дату)
 
 const convertMs = (ms) => {
   const second = 1000;

@@ -25,6 +25,10 @@
   display: grid;
   gap: clamp(1.5rem, 4.17vw, 2rem);
   justify-content: center;
+
+  @media (max-width: 48rem) {
+    grid-template-rows: 1fr minmax(15rem, 1fr);
+  }
 }
 
 .section-text {
@@ -319,9 +323,9 @@
   }
 
   .columns-2 {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 3%;
+    align-items: stretch;
   }
 
   .section-text {
